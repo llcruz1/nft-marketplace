@@ -12,7 +12,7 @@ function renderSoldItems(items) {
             <Card>
               <Card.Img variant="top" src={item.image} />
               <Card.Footer>
-                For {ethers.utils.formatEther(item.totalPrice)} ETH - Recieved{" "}
+                For {ethers.utils.formatEther(item.totalPrice)} ETH - Received{" "}
                 {ethers.utils.formatEther(item.price)} ETH
               </Card.Footer>
             </Card>
@@ -23,7 +23,7 @@ function renderSoldItems(items) {
   );
 }
 
-export default function MyListedItems({ marketplace, nft, account }) {
+export default function UserListedItems({ marketplace, nft, account }) {
   const [loading, setLoading] = useState(true);
   const [listedItems, setListedItems] = useState([]);
   const [soldItems, setSoldItems] = useState([]);

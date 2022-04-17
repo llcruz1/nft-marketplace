@@ -1,17 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navigation from "./Navbar";
-import Home from "./Home.js";
-import Create from "./Create.js";
-import MyListedItems from "./MyListedItems.js";
-import MyPurchases from "./MyPurchases.js";
-import MarketplaceAbi from "../contractsData/Marketplace.json";
-import MarketplaceAddress from "../contractsData/Marketplace-address.json";
-import NFTAbi from "../contractsData/NFT.json";
-import NFTAddress from "../contractsData/NFT-address.json";
+import Navigation from "./components/Navbar";
+import Home from "./pages/Home.js";
+import Create from "./pages/Create.js";
+import UserListedItems from "./pages/UserListedItems.js";
+import UserPurchases from "./pages/UserPurchases.js";
+import MarketplaceAbi from "./contractsData/Marketplace.json";
+import MarketplaceAddress from "./contractsData/Marketplace-address.json";
+import NFTAbi from "./contractsData/NFT.json";
+import NFTAddress from "./contractsData/NFT-address.json";
 import { useState } from "react";
 import { ethers } from "ethers";
 import { Spinner } from "react-bootstrap";
-
 import "./App.css";
 
 function App() {
@@ -83,9 +82,9 @@ function App() {
                 element={<Create marketplace={marketplace} nft={nft} />}
               />
               <Route
-                path="/my-listed-items"
+                path="/user-listed-items"
                 element={
-                  <MyListedItems
+                  <UserListedItems
                     marketplace={marketplace}
                     nft={nft}
                     account={account}
@@ -93,9 +92,9 @@ function App() {
                 }
               />
               <Route
-                path="/my-purchases"
+                path="/user-purchases"
                 element={
-                  <MyPurchases
+                  <UserPurchases
                     marketplace={marketplace}
                     nft={nft}
                     account={account}

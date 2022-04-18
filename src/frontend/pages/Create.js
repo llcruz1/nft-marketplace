@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { ethers } from "ethers";
 import { Row, Form, Button } from "react-bootstrap";
 import { create as ipfsHttpClient } from "ipfs-http-client";
+import Web3Context from "../contexts/Web3Context";
+
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
-const Create = ({ marketplace, nft }) => {
+const Create = () => {
+  const { marketplace, nft } = useContext(Web3Context);
   const [image, setImage] = useState("");
   const [price, setPrice] = useState(null);
   const [name, setName] = useState("");

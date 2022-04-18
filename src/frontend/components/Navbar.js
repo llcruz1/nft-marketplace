@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Button, Container } from "react-bootstrap";
 import market from "../assets/market.png";
+import Web3Context from "../contexts/Web3Context";
 
-const Navigation = ({ web3Handler, account }) => {
+const Navigation = () => {
+  const { web3Handler, account } = useContext(Web3Context);
+
   return (
     <Navbar expand="lg" bg="secondary" variant="dark">
       <Container>

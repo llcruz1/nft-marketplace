@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { ethers } from "ethers";
 import { Row, Col, Card } from "react-bootstrap";
+import Web3Context from "../contexts/Web3Context";
 
-export default function UserPurchases({ marketplace, nft, account }) {
+export default function UserPurchases() {
+  const { marketplace, nft, account } = useContext(Web3Context);
   const [loading, setLoading] = useState(true);
   const [purchases, setPurchases] = useState([]);
   const loadPurchasedItems = async () => {

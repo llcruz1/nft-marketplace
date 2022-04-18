@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { ethers } from "ethers";
 import { Row, Col, Card } from "react-bootstrap";
+import Web3Context from "../contexts/Web3Context";
 
 function renderSoldItems(items) {
   return (
@@ -23,7 +24,8 @@ function renderSoldItems(items) {
   );
 }
 
-export default function UserListedItems({ marketplace, nft, account }) {
+export default function UserListedItems() {
+  const { marketplace, nft, account } = useContext(Web3Context);
   const [loading, setLoading] = useState(true);
   const [listedItems, setListedItems] = useState([]);
   const [soldItems, setSoldItems] = useState([]);

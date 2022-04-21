@@ -1,7 +1,6 @@
 ### Run local blockchain
 
 ```
-$ cd nft_marketplace
 $ npx hardhat node
 
 ```

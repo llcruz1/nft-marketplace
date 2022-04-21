@@ -9,19 +9,20 @@ import "./App.css";
 
 function App() {
   return (
-    <Router>
-      <Web3Provider>
-        <Navbar />
-        <div className="App">
+    <div className="App">
+      <Router>
+        <Web3Provider>
+          <Navbar />
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/nft-add" element={<NFTAdd />} />
             <Route path="/nft-list" element={<NFTList />} />
             <Route path="/nft-purchases" element={<NFTPurchases />} />
           </Routes>
-        </div>
-      </Web3Provider>
-    </Router>
+        </Web3Provider>
+      </Router>
+    </div>
   );
 }
 

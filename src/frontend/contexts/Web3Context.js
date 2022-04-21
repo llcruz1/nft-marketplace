@@ -18,7 +18,6 @@ export const Web3Provider = ({ children }) => {
 
   // MetaMask Login/Connect
   async function web3Handler() {
-    console.log("web3");
     const accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
@@ -38,7 +37,6 @@ export const Web3Provider = ({ children }) => {
   }
 
   async function loadContracts(signer) {
-    console.log("load");
     // Get deployed copies of contracts
     const marketplace = new ethers.Contract(MarketplaceAddress.address, MarketplaceAbi.abi, signer);
     setMarketplace(marketplace);

@@ -1,27 +1,27 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navigation from "./components/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
 import Home from "./pages/Home.js";
-import Create from "./pages/Create.js";
-import UserListedItems from "./pages/UserListedItems.js";
-import UserPurchases from "./pages/UserPurchases.js";
+import NFTAdd from "./pages/NFT/NFTAdd.js";
+import NFTList from "./pages/NFT/NFTList.js";
+import NFTPurchases from "./pages/NFT/NFTPurchases.js";
 import { Web3Provider } from "./contexts/Web3Context";
 import "./App.css";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Web3Provider>
-        <Navigation />
+        <Navbar />
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/create" element={<Create />} />
-            <Route path="/user-listed-items" element={<UserListedItems />} />
-            <Route path="/user-purchases" element={<UserPurchases />} />
+            <Route path="/nft-add" element={<NFTAdd />} />
+            <Route path="/nft-list" element={<NFTList />} />
+            <Route path="/nft-purchases" element={<NFTPurchases />} />
           </Routes>
         </div>
       </Web3Provider>
-    </BrowserRouter>
+    </Router>
   );
 }
 

@@ -5,8 +5,10 @@ import Web3Context from "../contexts/Web3Context";
 
 const Home = () => {
   const { marketplace, nft } = useContext(Web3Context);
+
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState([]);
+
   const loadMarketplaceItems = async () => {
     // Load all unsold items
     const itemCount = await marketplace.itemCount();
@@ -32,26 +34,27 @@ const Home = () => {
         });
       }
     }
+
     setLoading(false);
     setItems(items);
   };
 
   const buyMarketItem = async (item) => {
-    await (
-      await marketplace.purchaseItem(item.itemId, { value: item.totalPrice })
-    ).wait();
+    await (await marketplace.purchaseItem(item.itemId, { value: item.totalPrice })).wait();
     loadMarketplaceItems();
   };
 
   useEffect(() => {
     loadMarketplaceItems();
   }, []);
+
   if (loading)
     return (
       <main style={{ padding: "1rem 0" }}>
         <h2>Loading...</h2>
       </main>
     );
+
   return (
     <div className="flex justify-center">
       {items.length > 0 ? (
@@ -67,11 +70,7 @@ const Home = () => {
                   </Card.Body>
                   <Card.Footer>
                     <div className="d-grid">
-                      <Button
-                        onClick={() => buyMarketItem(item)}
-                        variant="primary"
-                        size="lg"
-                      >
+                      <Button onClick={() => buyMarketItem(item)} variant="primary" size="lg">
                         Buy for {ethers.utils.formatEther(item.totalPrice)} ETH
                       </Button>
                     </div>

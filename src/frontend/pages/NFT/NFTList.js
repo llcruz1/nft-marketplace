@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { ethers } from "ethers";
 import { Row, Col, Card } from "react-bootstrap";
-import Web3Context from "../contexts/Web3Context";
+import Web3Context from "../../contexts/Web3Context";
 
 function renderSoldItems(items) {
   return (
@@ -24,11 +24,13 @@ function renderSoldItems(items) {
   );
 }
 
-export default function UserListedItems() {
+export default function NFTList() {
   const { marketplace, nft, account } = useContext(Web3Context);
+
   const [loading, setLoading] = useState(true);
   const [listedItems, setListedItems] = useState([]);
   const [soldItems, setSoldItems] = useState([]);
+
   const loadListedItems = async () => {
     // Load all sold items that the user listed
     const itemCount = await marketplace.itemCount();
@@ -62,15 +64,18 @@ export default function UserListedItems() {
     setListedItems(listedItems);
     setSoldItems(soldItems);
   };
+
   useEffect(() => {
     loadListedItems();
   }, []);
+
   if (loading)
     return (
       <main style={{ padding: "1rem 0" }}>
         <h2>Loading...</h2>
       </main>
     );
+
   return (
     <div className="flex justify-center">
       {listedItems.length > 0 ? (
@@ -81,9 +86,7 @@ export default function UserListedItems() {
               <Col key={idx} className="overflow-hidden">
                 <Card>
                   <Card.Img variant="top" src={item.image} />
-                  <Card.Footer>
-                    {ethers.utils.formatEther(item.totalPrice)} ETH
-                  </Card.Footer>
+                  <Card.Footer>{ethers.utils.formatEther(item.totalPrice)} ETH</Card.Footer>
                 </Card>
               </Col>
             ))}

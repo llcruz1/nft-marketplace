@@ -20,13 +20,13 @@ const Navigation = () => {
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to="/create">
+            <Nav.Link as={Link} to="/nft-add">
               Create
             </Nav.Link>
-            <Nav.Link as={Link} to="/my-listed-items">
+            <Nav.Link as={Link} to="/nft-list">
               My Listed Items
             </Nav.Link>
-            <Nav.Link as={Link} to="/my-purchases">
+            <Nav.Link as={Link} to="/nft-purchases">
               My Purchases
             </Nav.Link>
           </Nav>
